@@ -2,6 +2,8 @@ use anyhow::{Context, Result, anyhow};
 use clap::{Parser, Subcommand};
 use std::collections::{BTreeSet, HashMap, HashSet};
 use std::fmt;
+use std::fmt::Write as _;
+use std::fs;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::path::{Path, PathBuf};
@@ -112,7 +114,8 @@ fn cmd_scan(
         find_include_lines(&path, &mut mapping)?;
     }
 
-    println!("{:#?}", mapping);
+    let dot = write_dot(&mapping.inner, PathBuf::from(".").as_path());
+    fs::write("dep-graph.dot", dot)?;
     Ok(())
 }
 
@@ -245,4 +248,79 @@ fn parse_exts(exts_csv: Option<String>) -> BTreeSet<String> {
 
 fn canonicalize_lenient(p: &Path) -> PathBuf {
     p.canonicalize().unwrap_or_else(|_| p.to_path_buf())
+}
+
+/// Render mapping (includee -> {includers}) with includees on the LEFT and includers on the RIGHT.
+pub fn write_dot_left_right(
+    mapping: &HashMap<PathBuf, HashSet<PathBuf>>,
+    project_root: &Path,
+) -> String {
+    fn esc(s: &str) -> String {
+        s.replace('\\', "\\\\").replace('"', "\\\"")
+    }
+    fn rel<'a>(p: &'a Path, root: &Path) -> String {
+        match p.strip_prefix(root) {
+            Ok(r) => r.to_string_lossy().to_string(),
+            Err(_) => p.to_string_lossy().to_string(),
+        }
+    }
+    fn classify(p: &Path) -> (&'static str, &'static str) {
+        match p.extension().and_then(|e| e.to_str()) {
+            Some("c") => ("ellipse", "#e8f0fe"), // sources
+            _ => ("box", "#fff7e6"),             // headers/others
+        }
+    }
+
+    // Collect sets
+    let mut includees: HashSet<PathBuf> = HashSet::new();
+    let mut includers: HashSet<PathBuf> = HashSet::new();
+    for (inc, who) in mapping {
+        includees.insert(inc.clone());
+        includers.extend(who.iter().cloned());
+    }
+
+    let mut out = String::new();
+    out.push_str("digraph Includes {\n");
+    out.push_str("  rankdir=LR;\n");
+    out.push_str("  graph [splines=true, concentrate=true];\n");
+    out.push_str("  node  [fontname=\"Helvetica\", fontsize=10, style=filled];\n");
+    out.push_str("  edge  [arrowhead=vee];\n");
+
+    // Left column: includees
+    out.push_str("  { rank=source;\n");
+    for n in &includees {
+        let (shape, fill) = classify(n);
+        let label = esc(&rel(n, project_root));
+        let _ = writeln!(
+            out,
+            "    \"{}\" [shape={}, fillcolor=\"{}\"];",
+            label, shape, fill
+        );
+    }
+    out.push_str("  }\n");
+
+    // Right column: includers
+    out.push_str("  { rank=sink;\n");
+    for n in &includers {
+        let (shape, fill) = classify(n);
+        let label = esc(&rel(n, project_root));
+        let _ = writeln!(
+            out,
+            "    \"{}\" [shape={}, fillcolor=\"{}\"];",
+            label, shape, fill
+        );
+    }
+    out.push_str("  }\n");
+
+    // Edges: includee -> includer (so left → right)
+    for (includee, who) in mapping {
+        let from = esc(&rel(includee, project_root));
+        for inc in who {
+            let to = esc(&rel(inc, project_root));
+            let _ = writeln!(out, "  \"{}\" -> \"{}\";", from, to);
+        }
+    }
+
+    out.push_str("}\n");
+    out
 }
