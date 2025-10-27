@@ -1,0 +1,106 @@
+{
+  "roots": [
+    "/home/systronaut/Projects/dep-crawler/mock-c-project"
+  ],
+  "hash": {
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/generated/autogen.h": "cda12763a3bd2aaca0d34abcafeeec8d89f8a408e405b3afe4f133f5c4ea5859",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/common.h": "1f639b5aecb642d659aac2d39c161511323aa11b90b8cb383772b9136f488c09",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/config.h": "c87525240f94c30043875833038767c34c7f7536c267192d600e86597646d2a9",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/graph.h": "976723803dd13a2b43e7a785b9ffabe424e6dcbd95dcddec629b5e071d68da08",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/edge.h": "12b46384f050c63908e974123035d48bb9b3f5857e9ea8ee9eb4da53e8b91a4a",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/node.h": "c15e6d3ae712627675bc6e7c7a63c10c3b8c6baf2d6fa47dfded42a82810ec16",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/platform/posix.h": "e14ee5f2040b3b1c4b6fb8e4a9138aec5ff8900cec691041b270652d4b924b0f",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/platform/win.h": "f45d4117690233d340c69f90f275c9d01d974d02cdfc6c464ba6f126fca8ddd1",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/math.h": "4dc3ab1f4893afa05c2f39884dd1e9b91472b67c3df031caf148afc222849e4f",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/number.h": "a3cc0d2e1185f1a75ad4cce8cdbe77c2a2af323c4832536cc44588d42dc9769e",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/version.h": "c83f0cbf5c81b977e64e7ad5edf4ba4641e8b63043260c1e47063e79a636dc90",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.c": "e4086f19110d4a2e77a6f80ebc5d506754a419ed52b687017f51db3dc3564818",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.h": "54b97aa2e540617c760dd0d0fb33e4f080c61bab0204671746baf447efd1c93e",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/src/graph.c": "6c30795a718175fc7952b60362e32ec540aaea223eab8dc51ccd1862961653fd",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/src/main.c": "60e9b3da6715d4972651b4dca84015fc51e86a94574b2cab82a3d14565870a94",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/src/platform.c": "a4b6206988db399afa7a54712f00aa3ddb7fb6080332a467091bb4b8b3f583c8",
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/src/util.c": "6e3be4775e51766d8e26b6c31bbd9a786b1ade5340642133ff743b13743e0f2a"
+  },
+  "edges": {
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/common.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/config.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/math.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/config.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/platform/win.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/platform/posix.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/graph.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/node.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/edge.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/node.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/node.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/edge.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/math.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/number.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.c": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/common.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/src/graph.c": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/graph.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/math.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/src/main.c": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/common.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/graph.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/src/platform.c": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/config.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/src/util.c": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/math.h"
+    ]
+  },
+  "rev": {
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/common.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/src/main.c"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/config.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/common.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/src/platform.c"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/graph.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/src/graph.c",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/src/main.c"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/edge.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/node.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/node.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/model/edge.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/graph.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/platform/posix.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/config.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/platform/win.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/config.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/math.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/common.h",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/src/util.c",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/src/graph.c"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/number.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/include/util/math.h"
+    ],
+    "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.h": [
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/plugins/plugin.c",
+      "/home/systronaut/Projects/dep-crawler/mock-c-project/src/main.c"
+    ]
+  }
+}
