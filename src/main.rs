@@ -11,7 +11,7 @@ use walkdir::WalkDir;
 
 /// Minimal file finder: lists relevant C/C++ header/source files.
 #[derive(Parser, Debug)]
-#[command(name = "crawl", version, about = "List relevant C files from roots")]
+#[command(name = "ccrawl", version, about = "List relevant C files from roots")]
 struct Cli {
     #[command(subcommand)]
     cmd: Cmd,
@@ -65,6 +65,7 @@ enum Cmd {
         follow_symlinks: bool,
     },
 
+    /// Scan for relevant files under given roots, building an import mapping
     Scan {
         /// One or more root directories to scan
         #[arg(required = true)]
