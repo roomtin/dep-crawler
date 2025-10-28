@@ -114,7 +114,7 @@ fn cmd_scan(
         find_include_lines(&path, &mut mapping)?;
     }
 
-    let dot = write_dot(&mapping.inner, PathBuf::from(".").as_path());
+    let dot = write_dot_left_right(&mapping.inner, PathBuf::from(".").as_path());
     fs::write("dep-graph.dot", dot)?;
     Ok(())
 }
